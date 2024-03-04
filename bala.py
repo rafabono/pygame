@@ -31,3 +31,4 @@ class Bala(Sprite):
     def draw_bala(self):
         """Dibuja la bala en la pantalla"""
         pygame.draw.rect(self.pantalla, self.color, self.rect)
+
