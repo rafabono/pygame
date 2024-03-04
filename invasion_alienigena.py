@@ -27,15 +27,11 @@ def run_game():
         # Escucha eventos de teclado o ratón
         fj.verificar_eventos(ai_configuraciones, pantalla, nave, balas)
         nave.update()
-        # El método update del grupo balas llama al método update de cada bala
-        balas.update()
-        # Deshace las balas que han desparecido de la pantalla, para no consumir recursos
-        fj.elimina_balas(balas)
+        # Actualiza balas y elimina las que salen de pantalla
+        fj.update_balas(balas)
         # Verficamos el numero de balas que hay en la pantalla
         #print(len(balas))
         # Llama a la función para actualizar la pantalla
         fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, balas)
-
-
 
 run_game()

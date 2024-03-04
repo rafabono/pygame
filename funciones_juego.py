@@ -41,8 +41,10 @@ def actualizar_pantalla(ai_configuraciones, pantalla, nave, balas):
     # Hace visible la pantalla dibujada más reciente
     pygame.display.flip()    
 
-def elimina_balas(balas):
-    '''Elimina las balas que se salen de la pantalla para evitar que consuman recursos'''
+def update_balas(balas):
+    """Actualiza posicion de las balas y elimina las balas que se salen de la pantalla para evitar que consuman recursos"""
+    # El método update del grupo balas llama al método update de cada bala
+    balas.update()
     for bala in balas.copy():
         if bala.rect.bottom <= 0:
             balas.remove(bala)
