@@ -10,7 +10,7 @@ class Alien(Sprite):
         self.ai_configuraciones = ai_configuraciones
 
         # Carga la imagen de la nave y obtiene su rect
-        self.imagen = pygame.image.load("imagenes/alien.bmp")
+        self.imagen = pygame.image.load("imagenes/alien_julia.bmp")
         # Pygame trata las imágenes como rectángulos, por lo que debemos obtener el atributo rectángulo de la imagen.
         self.rect = self.imagen.get_rect()    
 
