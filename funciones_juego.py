@@ -8,10 +8,10 @@ def verificar_eventos_keydown(event, ai_configuraciones, pantalla, nave, balas):
     elif event.key==pygame.K_LEFT:
         nave.moving_left = True
     elif event.key==pygame.K_SPACE:
-        # Crea una nueva bala y la añade al grupo balas
-        if len(balas) < ai_configuraciones.balas_allowed:
-            nueva_bala = Bala(ai_configuraciones,pantalla,nave)
-            balas.add(nueva_bala)
+        fuego_bala(ai_configuraciones, pantalla, nave, balas)
+    elif event.key==pygame.K_q:
+        sys.exit()
+
 
 def verificar_eventos_keyup(event, nave):
     if event.key==pygame.K_RIGHT:
@@ -48,3 +48,10 @@ def update_balas(balas):
     for bala in balas.copy():
         if bala.rect.bottom <= 0:
             balas.remove(bala)
+
+def fuego_bala(ai_configuraciones, pantalla, nave, balas):
+    """Dispara una bala si aún no ha alcanzado el límite"""
+    # Crea una nueva bala y la añade al grupo balas
+    if len(balas) < ai_configuraciones.balas_allowed:
+        nueva_bala = Bala(ai_configuraciones,pantalla,nave)
+        balas.add(nueva_bala)
