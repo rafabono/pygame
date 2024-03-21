@@ -5,8 +5,7 @@ from pygame.sprite import Group
 from configuraciones import Configuraciones
 # Importamos la clase Nave
 from nave import Nave
-# Importamos la clase Alien
-from alien import Alien
+
 # Importamos funciones_juego
 import funciones_juego as fj
 
@@ -23,8 +22,11 @@ def run_game():
     nave = Nave(ai_configuraciones, pantalla)
     # Crea un grupo para almacenar las balas
     balas = Group()
-    # Crae un alien.
-    alien = Alien(ai_configuraciones, pantalla)
+    # Crae un grupo de aliens
+    aliens = Group()
+
+    # Crea flota aliens
+    fj.crear_flota(ai_configuraciones, pantalla, aliens)
 
     # Bucle principal del juego
     while True:
@@ -37,6 +39,6 @@ def run_game():
         # Verficamos el numero de balas que hay en la pantalla
         #print(len(balas))
         # Llama a la función para actualizar la pantalla
-        fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, alien, balas)
+        fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, aliens, balas)
 
 run_game()
