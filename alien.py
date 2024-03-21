@@ -10,9 +10,9 @@ class Alien(Sprite):
         self.ai_configuraciones = ai_configuraciones
 
         # Carga la imagen de la nave y obtiene su rect
-        self.imagen = pygame.image.load("imagenes/alien_julia.bmp")
+        self.image = pygame.image.load("imagenes/alien_julia.bmp")
         # Pygame trata las imágenes como rectángulos, por lo que debemos obtener el atributo rectángulo de la imagen.
-        self.rect = self.imagen.get_rect()    
+        self.rect = self.image.get_rect()    
 
         # Inicia cada nuevo alien cerca de la parte superior izquierda de la pantalla
         self.rect.x = self.rect.width  
@@ -23,4 +23,4 @@ class Alien(Sprite):
 
     def blitme(self):
         """Dibuja el alien en su posición actual"""
-        self.pantalla.blit(self.imagen, self.rect)        
+        self.pantalla.blit(self.image, self.rect)        

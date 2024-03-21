@@ -59,19 +59,28 @@ def fuego_bala(ai_configuraciones, pantalla, nave, balas):
         nueva_bala = Bala(ai_configuraciones,pantalla,nave)
         balas.add(nueva_bala)
 
+def get_number_aliens_x(ai_configuraciones, alien_width):
+    """Determina el número de aliens que caben en una fila"""
+    available_space_x = ai_configuraciones.screen_width - 2 * alien_width
+    number_alien_x = int(available_space_x / (2 * alien_width))
+    return number_alien_x
+
+def crear_alien(ai_configuraciones, pantalla, aliens, alien_number):
+    """Crea un alien y lo coloca en la fila"""
+    alien = Alien(ai_configuraciones, pantalla)
+    alien_width = alien.rect.width
+    alien.x = alien_width + 2 * alien_width * alien_number
+    alien.rect.x = alien.x
+    aliens.add(alien)    
+
 def crear_flota(ai_configuraciones, pantalla, aliens):
     """Crea una flota de aliens"""
     # Crea un alien y designa el numero de aliens seguidos
     # El espacio entre cada alien es el ancho del alien
     alien = Alien(ai_configuraciones, pantalla)
-    alien_width = alien.rect.width
-    available_space_x = ai_configuraciones.screen_width - 2 * alien_width
-    number_alien_x = int(available_space_x / (2 * alien_width))
+    number_alien_x = get_number_aliens_x(ai_configuraciones, alien.rect.width)
 
-    # Crea primera fila de aliens
+    # Crea la primera fila de aliens
     for alien_number in range(number_alien_x):
-        # Crea un alien y lo coloca en la fila
-        alien = Alien(ai_configuraciones, pantalla)
-        alien.x = alien_width + 2 * alien_width * alien_number
-        alien.rect.x = alien.x
-        aliens.add(alien)
+        crear_alien(ai_configuraciones, pantalla, aliens, alien_number)
+
