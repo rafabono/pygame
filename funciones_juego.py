@@ -29,7 +29,7 @@ def verificar_eventos(ai_configuraciones, pantalla, nave, balas):
         elif event.type==pygame.KEYUP:
             verificar_eventos_keyup(event,nave)
 
-def actualizar_pantalla(ai_configuraciones, pantalla, nave, balas):
+def actualizar_pantalla(ai_configuraciones, pantalla, nave, alien, balas):
     """Actualiza las imágenes en la pantalla y pasa a la nueva pantalla"""
     # Rellenamos del color de fondo la pantalla
     pantalla.fill(ai_configuraciones.bg_color)
@@ -38,6 +38,8 @@ def actualizar_pantalla(ai_configuraciones, pantalla, nave, balas):
         bala.draw_bala()
     # Invocamos al método que pinta la nave
     nave.blitme()
+    # Invocamos al método que pinta el alien
+    alien.blitme()    
     # Hace visible la pantalla dibujada más reciente
     pygame.display.flip()    
 
